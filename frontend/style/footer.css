@@ -1,0 +1,20 @@
+footer {
+    padding: 0 200px;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--gray-400);
+
+    .items {
+        display: flex;
+        gap: 32px;
+        a {
+            text-decoration: none;
+            color: var(--blue-100);
+        }
+        a:hover {
+            color: var(--blue-200);
+        }
+    }
+}

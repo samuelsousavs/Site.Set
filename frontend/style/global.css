@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'PT Sans Caption', sans-serif;
+    transition: 0.3s ease;
+}
+
+:root {
+    --blue-100: #7EA4D7;
+    --blue-200: #2C85FC;
+    --blue-300: #2266C1;
+    --blue-400: #0D284C;
+    --cyan-100: #2DEBFC;
+    --cyan-200: #187D86;
+    --cyan-300: #0E474C;
+    --white: #fff;
+    --gray-100: #E9EAEC;
+    --gray-200: #D3D5D9;
+    --gray-300: #93979E;
+    --gray-400: #20242C;
+    --gray-500: #16181D;
+    --gray-600: #14161A;
+    --gray-700: #101216;
+    --gray-800: #0B0C0F;
+}
+
+body {
+    background-color: var(--gray-500);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+main {
+    flex: 1;
+}
