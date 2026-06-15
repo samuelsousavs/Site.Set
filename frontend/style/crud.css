@@ -150,13 +150,20 @@
     padding: 16px;
     text-align: left;
     border-bottom: 1px solid var(--gray-300);
+    vertical-align: middle;
 }
+
 
 .produtos-table th {
     background-color: var(--gray-600);
     color: var(--blue-100);
     font-weight: 700;
 }
+
+.produtos-table td {
+    word-break: break-word;
+}
+
 
 .produtos-table tr:last-child td {
     border-bottom: none;
@@ -166,7 +173,26 @@
     background-color: var(--gray-600);
 }
 
+/* Lista: ações (evita sobreposição dos botões) */
+.acoes-cell {
+    width: 220px;
+}
+
+.acoes {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.acoes-cell .btn-cancel,
+.acoes-cell .btn-delete {
+    white-space: nowrap;
+}
+
 .btn-delete {
+
     padding: 8px 16px;
     background-color: #c0392b;
     color: var(--white);

@@ -17,6 +17,7 @@ $removido = isset($_GET['removido']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +26,7 @@ $removido = isset($_GET['removido']);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Listar Produtos - Site.set</title>
 </head>
+
 <body>
     <nav>
         <div class="logo">
@@ -82,12 +84,18 @@ $removido = isset($_GET['removido']);
                                 <td><?= htmlspecialchars($produto['descricao'] ?? '-') ?></td>
                                 <td class="preco">R$ <?= number_format((float) $produto['preco'], 2, ',', '.') ?></td>
                                 <td><?= date('d/m/Y H:i', strtotime($produto['created_at'])) ?></td>
-                                <td>
-                                    <a href="delete.php?id=<?= (int) $produto['id'] ?>"
-                                       class="btn-delete"
-                                       onclick="return confirm('Deseja realmente remover este produto?')">
-                                        <i class="fa-solid fa-trash"></i> Remover
-                                    </a>
+                                <td class="acoes-cell">
+                                    <div class="acoes">
+                                        <a href="edit.php?id=<?= (int) $produto['id'] ?>"
+                                            class="btn-cancel">
+                                            <i class="fa-solid fa-pen-to-square"></i> Editar
+                                        </a>
+                                        <a href="delete.php?id=<?= (int) $produto['id'] ?>"
+                                            class="btn-delete"
+                                            onclick="return confirm('Deseja realmente remover este produto?')">
+                                            <i class="fa-solid fa-trash"></i> Remover
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -106,4 +114,5 @@ $removido = isset($_GET['removido']);
         </div>
     </footer>
 </body>
+
 </html>
