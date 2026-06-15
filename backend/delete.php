@@ -1,12 +1,7 @@
 <?php
 require_once 'db.php';
 
-$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-
-if (!$id) {
-    header('Location: listar.php');
-    exit;
-}
+$id = $_GET['id'];
 
 try {
     $pdo = conectar();

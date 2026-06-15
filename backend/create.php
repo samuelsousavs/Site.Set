@@ -5,29 +5,19 @@ $mensagem = '';
 $tipoMensagem = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nome = trim($_POST['nome'] ?? '');
-    $descricao = trim($_POST['descricao'] ?? '');
-    $preco = str_replace(',', '.', trim($_POST['preco'] ?? ''));
+    $nome = $_POST['nome'];
+    $descricao = $_POST['descricao'];
+    $preco = $_POST['preco'];
 
-    if ($nome === '' || $preco === '' || !is_numeric($preco)) {
-        $mensagem = 'Preencha o nome e um preço válido.';
+    try {
+        $pdo = conectar();
+        $stmt = $pdo->prepare('INSERT INTO produtos (nome, descricao, preco) VALUES (?, ?, ?)');
+        $stmt->execute([$nome, $descricao, $preco]);
+        header('Location: listar.php');
+        exit;
+    } catch (PDOException $e) {
+        $mensagem = 'Erro ao cadastrar produto. Verifique se a tabela foi criada no banco de dados.';
         $tipoMensagem = 'error';
-    } else {
-        try {
-            $pdo = conectar();
-            $stmt = $pdo->prepare('INSERT INTO produtos (nome, descricao, preco) VALUES (:nome, :descricao, :preco)');
-            $stmt->execute([
-                ':nome' => $nome,
-                ':descricao' => $descricao,
-                ':preco' => $preco,
-            ]);
-
-            header('Location: listar.php?sucesso=1');
-            exit;
-        } catch (PDOException $e) {
-            $mensagem = 'Erro ao cadastrar produto. Verifique se a tabela foi criada no banco de dados.';
-            $tipoMensagem = 'error';
-        }
     }
 }
 ?>

@@ -1,114 +1,53 @@
 # Site.Set
 
-Sistema de cadastro de produtos desenvolvido em PHP com MySQL (PDO).
+Sistema de cadastro de produtos desenvolvido em PHP com MySQL.
 
-## Requisitos
+## O que você precisa
 
-- [XAMPP](https://www.apachefriends.org/) (Apache + PHP + MySQL)
-- Git (opcional, para clonar o repositório)
+- [XAMPP](https://www.apachefriends.org/) instalado (Apache + PHP + MySQL)
+- Git (opcional, para baixar o projeto)
 
-## Instalação
+## Como instalar
 
-### 1. Clonar o repositório
+### 1. Baixar o projeto
 
-```bash
-git clone https://github.com/samuelsousavs/Site.Set.git
-```
-
-Coloque a pasta dentro do diretório `htdocs` do XAMPP:
+Baixe ou clone o repositório e coloque a pasta dentro do `htdocs` do XAMPP:
 
 ```
 C:\xampp\htdocs\dashboard\Site.Set
 ```
 
-### 2. Iniciar o XAMPP
+### 2. Ligar o XAMPP
 
-Abra o painel do XAMPP e inicie os serviços **Apache** e **MySQL**.
+Abra o XAMPP e clique em **Start** nos serviços **Apache** e **MySQL**.
 
-### 3. Criar o banco de dados
+### 3. Criar o banco de dados pelo phpMyAdmin
 
-Escolha uma das opções abaixo:
+1. Abra o navegador e acesse: `http://localhost/phpmyadmin`
+2. No menu lateral esquerdo, clique em **Importar**
+3. Clique em **Escolher arquivo** e selecione o arquivo `database.sql` que está dentro da pasta `backend` do projeto
+4. Role a página até o final e clique em **Executar**
+5. Pronto! O banco `blog-crud` e a tabela `produtos` serão criados automaticamente
 
-#### Opção A — Terminal (Windows / XAMPP)
+### 4. Conexão com o banco (só se necessário)
 
-```bash
-C:\xampp\mysql\bin\mysql.exe -u root < backend\database.sql
-```
+Por padrão, o XAMPP já funciona sem senha. Se o seu MySQL tiver senha, edite o arquivo `backend/db.php` e coloque seus dados de acesso.
 
-#### Opção B — Terminal (Linux / macOS)
+## Como acessar o site
 
-```bash
-mysql -u root -p < backend/database.sql
-```
-
-#### Opção C — phpMyAdmin
-
-1. Acesse `http://localhost/phpmyadmin`
-2. Vá em **Importar**
-3. Selecione o arquivo `backend/database.sql`
-4. Clique em **Executar**
-
-#### Opção D — SQL manual
-
-Execute no phpMyAdmin ou no terminal MySQL:
-
-```sql
-CREATE DATABASE IF NOT EXISTS `blog-crud` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
-USE `blog-crud`;
-
-CREATE TABLE IF NOT EXISTS `produtos` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `nome` VARCHAR(255) NOT NULL,
-    `descricao` TEXT,
-    `preco` DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
-    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-```
-
-### 4. Configurar a conexão (se necessário)
-
-As credenciais padrão do XAMPP já estão configuradas em `backend/db.php`:
-
-| Configuração | Valor padrão |
+| Página | Link |
 |---|---|
-| Host | `localhost` |
-| Banco | `blog-crud` |
-| Usuário | `root` |
-| Senha | *(vazio)* |
-
-Se o seu MySQL usa senha, edite o arquivo `backend/db.php`.
-
-## Acessar o sistema
-
-| Página | URL |
-|---|---|
-| Início | `http://localhost/dashboard/Site.Set/frontend/index.php` |
+| Página inicial | `http://localhost/dashboard/Site.Set/frontend/index.php` |
 | Cadastrar produto | `http://localhost/dashboard/Site.Set/backend/create.php` |
 | Listar produtos | `http://localhost/dashboard/Site.Set/backend/listar.php` |
 
-> Ajuste o caminho conforme a pasta onde o projeto foi instalado dentro do `htdocs`.
+> Se você colocou o projeto em outra pasta dentro do `htdocs`, ajuste o link de acordo.
 
-## Funcionalidades
+## O que o sistema faz
 
 - Cadastrar produtos (nome, descrição e preço)
-- Listar produtos cadastrados
+- Ver todos os produtos cadastrados
 - Remover produtos
-
-## Estrutura do projeto
-
-```
-Site.Set/
-├── backend/
-│   ├── db.php           # Conexão com o banco de dados
-│   ├── database.sql     # Script de criação do banco e tabela
-│   ├── create.php       # Cadastro de produtos
-│   ├── listar.php       # Listagem de produtos
-│   └── delete.php       # Remoção de produtos
-└── frontend/
-    ├── index.php        # Página inicial
-    └── style/           # Estilos CSS
-```
 
 ## Desenvolvedor
 
